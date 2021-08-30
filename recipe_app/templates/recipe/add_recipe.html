@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Recipe{% endblock title %}
+{% block css %}{% static 'recipe/add_recipe.css' %}{% endblock css %}
+{% block content %}
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for a in form %}
+            <ul>
+                <li>{{a.label_tag}}</li>
+                <li>{{a}}</li>
+            </ul>
+        {% endfor %}
+        <button type="submit"> save</button>
+    </form>
+
+{% endblock content %}

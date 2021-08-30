@@ -6,7 +6,15 @@
 
 {% block content %}
 
-<h1>main page</h1>
+<h1>Chakka The Recipe Manager</h1>
+    {% for a in recipes %}
+
+        <div>
+            <img src="{{a.image.url}}" alt="">
+            <p>{{a.food_name}}</p>
+        </div>
+    
+    {% endfor %}
 
 {% endblock content %}
 {% block js %}{% static 'recipe/main.js' %}{% endblock js %}

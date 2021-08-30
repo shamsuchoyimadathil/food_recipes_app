@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path("",views.main, name="main-page"),
+    path("addrecipe",views.add_recipe,name="add-recipe"),
 ]
