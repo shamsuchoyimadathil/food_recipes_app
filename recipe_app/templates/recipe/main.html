@@ -9,10 +9,10 @@
 <h1>Chakka The Recipe Manager</h1>
     {% for a in recipes %}
 
-        <div>
+        <a href="{% url 'detail-page' a.pk %}" >
             <img src="{{a.image.url}}" alt="">
             <p>{{a.food_name}}</p>
-        </div>
+        </a>
     
     {% endfor %}
 

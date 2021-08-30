@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}{% static 'recipe/detail.css' %}{% endblock css %}
+
+{% block content %}
+
+    {% comment %} {% for a in detail %} {% endcomment %}
+    <div>
+        <h1>{{detail.food_name}}</h1>
+    </div>
+    
+    {% comment %} {% endfor %} {% endcomment %}
+
+{% endblock content %}

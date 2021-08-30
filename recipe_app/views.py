@@ -38,13 +38,12 @@ def add_recipe(request):
     context['form'] = add_recipe_form
 
     return render(request,"recipe/add_recipe.html",context)
-        # food_name = models.Recipes(cleaned_data['food_name'])
-        # description = models.Recipes(cleaned_data['description'])
-        # image = models.Recipes(cleaned_data['image'])
-        # preparation_time = models.Recipes(cleaned_data['preparation_time'])
-        # ingredients = models.Recipes(cleaned_data['ingredients'])
-        # preparation = models.Recipes(cleaned_data['preparation'])
-        # category = models.Recipes(cleaned_data['category'])
-        # native_food_of = models.Recipes(cleaned_data['native_food_of'])
-        # cuisine_type = models.Recipes(cleaned_data['cuisine_type'])
 
+
+
+def detail(request,id):
+    context = {}
+    detail_view = models.Recipes.objects.get(pk=id)
+    context['detail'] = detail_view 
+
+    return render(request,"recipe/detail.html",context)
