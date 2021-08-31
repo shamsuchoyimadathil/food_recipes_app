@@ -4,12 +4,50 @@
 {% block css %}{% static 'recipe/detail.css' %}{% endblock css %}
 
 {% block content %}
+     <section>
+        <h1 class="desc">{{detail.food_name}}</h2>
+        <hr>
 
-    {% comment %} {% for a in detail %} {% endcomment %}
-    <div>
-        <h1>{{detail.food_name}}</h1>
-    </div>
+        <div class="responsive container">
+            <div class="detail">
+                <img src="{{detail.image.url}}"> 
+                <div class="detail_side">
+                    <h5>preparation time:</h5>
+                    <p>{{detail.preparation_time}} minute</p>
+                    <h5>category:</h5>
+                    <p>{{detail.category}}</p>
+                    <h5>native food of:</h5>
+                    <p>{{detail.native_food_of}}</p>
+                    <h5>cuisine type:</h5>
+                    <p>{{detail.cuisine_type}}</p>
+                </div>
+            </div>
+            <button class="btn btn-outline-danger ">Add to favorite</button>
+        </div> 
+        <hr>
+
+            <div>
+                <p>{{detail.description}}</p>
+            </div>
+
+        <hr>
+
+        <div>
+            <h3>Ingredients :-</h3>
+            <ul>
+                <li>{{detail.ingredients}}</li>
+            </ul>
+        </div> 
+        <hr> 
+        <div>
+            <h3>How to cook:</h3>
+            <p>{{detail.preparation}}</p>
+        </div>
+        
+
+
+
+    </section>
     
-    {% comment %} {% endfor %} {% endcomment %}
 
 {% endblock content %}
