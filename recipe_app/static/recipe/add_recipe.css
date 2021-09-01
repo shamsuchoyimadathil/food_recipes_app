@@ -14,7 +14,7 @@
 	max-width: 300px;
 	margin: 5px auto;
 	padding: 5px 5px;
-	background: #f8f4f8;
+	background: #ffffff;
 	border-radius: 8px;
 	border: 0.5px solid rgb(202, 202, 202);
   }
@@ -37,10 +37,12 @@
 	outline: 0;
 	padding: 15px;
 	width: 100%;
-	background-color: #ece8ef;
+	background-color: #ffffff;
 	color: #020202;
 	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 	margin-bottom: 30px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
   }
   
   
@@ -53,6 +55,10 @@
   li{
       list-style: none;
   }
+
+button{
+	width: 100%;
+}
   
   @media screen and (min-width: 600px) {
   

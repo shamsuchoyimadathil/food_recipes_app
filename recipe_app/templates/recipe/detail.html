@@ -44,7 +44,16 @@
             <p>{{detail.preparation}}</p>
         </div>
         
+    <form action="{% url 'favouries-page' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="favourite_id" value={{detail.id}}> 
 
+        {% if detail.id in request.session.favourite_recipes %}
+            <button type="submit" name='remove'> Remove from Favorite</button>
+        {% else %}
+            <button type="submit" name='add'> Add to Favorite</button>
+        {% endif %}
+    </form>
 
 
     </section>

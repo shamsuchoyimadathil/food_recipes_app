@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Favourites{% endblock title %}
+{% block css %}{% static 'recipe/favourite.css' %}{% endblock css %}
+
+{% block content %}
+
+    <h1>Favourite Recipes</h1>
+    <hr > 
+
+    <div class="container">
+
+
+        {% for a in recipes %} 
+
+            {% if not has_recipes %}
+                <p>You don't have any favourite recipes</p>
+            {% endif %}
+
+            <a href="{% url 'detail-page' a.pk %}" class="card" style="width: 15rem;">
+                <img src="{{a.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{a.food_name}}</h5>
+                </div>
+            </a>
+
+        
+        {% endfor %} 
+
+    </div> 
+    
+{% endblock content %}

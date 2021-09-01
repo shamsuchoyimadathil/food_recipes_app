@@ -1,0 +1,38 @@
+body {
+  font-family: 'Nunito', sans-serif;
+	color: #060707;
+	background-color: #f8f4f8;
+}
+
+section{
+    width: 50%;
+    margin: auto;
+    border-radius: 8px;
+  	border: 0.5px solid rgb(202, 202, 202);
+    margin: 5rem auto;
+    padding: 2rem 2rem;
+    background-color: white;
+} 
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+button {
+
+  margin: 8px 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  section{
+    width: 80%;
+  }
+}
