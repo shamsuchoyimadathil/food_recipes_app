@@ -59,6 +59,12 @@
 button{
 	width: 100%;
 }
+
+.pos{
+	position: absolute;
+	/* top: 110%; */
+	top: 750px;
+}
   
   @media screen and (min-width: 600px) {
   

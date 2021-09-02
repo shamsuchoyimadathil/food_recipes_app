@@ -1,6 +1,9 @@
-// search = document.getElementById("search") 
-// img_container = document.getElementById ("quote_container")
+// search = document.querySelector("#search_form")
 
-// search.addEventListener('click',()=>{
-//     img_container.style.display ="none"
-// }) 
+// search.addEventListener('submit',(e)=>{
+//     document.querySelector(".quote_container").style.display = 'none';
+//     e.preventDefault()
+//     console.log('working?')
+
+// })
+

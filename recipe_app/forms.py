@@ -1,7 +1,5 @@
 from django import forms
-
-
-
+from django.db.models import fields
 from . import models
 
 class RecipesForm(forms.ModelForm):
@@ -34,3 +32,8 @@ class RecipesForm(forms.ModelForm):
         self.fields['category'].widget.attrs=({'placeholder':'eg:sweet,spicy,peppery etc...'})
         self.fields['native_food_of'].widget.attrs=({'placeholder':'eg:indian,italian,arabian etc...'})
         
+
+class IngredientsForm(forms.ModelForm):
+    class Meta:
+        model = models.Ingredients
+        fields = "__all__"

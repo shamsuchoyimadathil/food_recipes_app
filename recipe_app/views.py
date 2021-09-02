@@ -1,6 +1,8 @@
 from django import forms
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render 
+from django.contrib.auth.decorators import login_required
+
 
 from . import models
 from . import forms
@@ -12,8 +14,6 @@ def main(request):
     recipes = models.Recipes.objects.all()
     filter = filters.RecipesFilters(request.GET, queryset=recipes)
     recipes = filter.qs
-
-  
 
     if recipes is None or len(recipes)==0:
         context["no_result"] = True
@@ -27,12 +27,13 @@ def main(request):
 
     return render(request,"recipe/main.html",context)
     
-
+@login_required
 def add_recipe(request):
 
     context = {}
 
     add_recipe_form = forms.RecipesForm(request.POST,request.FILES)
+    ingredients_form = forms.IngredientsForm(request.POST)
 
     if add_recipe_form.is_valid():
         cleaned_data = add_recipe_form.cleaned_data
@@ -45,9 +46,21 @@ def add_recipe(request):
         data.save()
         return HttpResponseRedirect("/") 
     else:
-        add_recipe_form = forms.RecipesForm 
+        add_recipe_form = forms.RecipesForm  
+
+
+    # if ingredients_form.is_valid():
+    #     cleaned_data = ingredients_form.cleaned_data
+    #     data = models.Ingredients(ingredient=cleaned_data['ingredient'])
+
+    #     data.save()
+    #     return HttpResponseRedirect("/")
+    # else:
+    #     ingredients_form = forms.IngredientsForm
+        
 
     context['form'] = add_recipe_form
+    context['ingredients'] = ingredients_form 
 
     return render(request,"recipe/add_recipe.html",context)
 
@@ -62,7 +75,6 @@ def detail(request,id):
 
 
 def favourites(request):
-
     
     if request.method == "GET":
         favourite_recipes = request.session.get('favourite_recipes')

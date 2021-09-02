@@ -10,7 +10,7 @@
 	<h1>Chakka The Recipe Manager</h1>
     <hr > 
 
-    <form method="GET" class="form-inline my-2 my-lg-0 ">
+    <form id="search_form" method="GET" class="form-inline my-2 my-lg-0 ">
         {{filter.form}}
       <button class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</button>
     </form> 
@@ -57,10 +57,5 @@
 
         </footer>
   
-
-
-
-
-
 {% endblock content %}
 {% block js %}{% static 'recipe/main.js' %}{% endblock js %}
