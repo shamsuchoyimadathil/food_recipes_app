@@ -8,4 +8,3 @@ class RecipesAdmin(admin.ModelAdmin):
     list_filter = ("category","cuisine_type","native_food_of")
 
 admin.site.register(models.Recipes,RecipesAdmin)
-admin.site.register(models.Ingredients)

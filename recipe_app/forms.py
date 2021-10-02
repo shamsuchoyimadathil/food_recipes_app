@@ -1,10 +1,8 @@
 from django import forms
-from django.db.models import fields
 from . import models
 
 class RecipesForm(forms.ModelForm):
     class Meta:
-
         model = models.Recipes 
         fields = "__all__"
         labels = {
@@ -27,13 +25,8 @@ class RecipesForm(forms.ModelForm):
         self.fields['description'].widget.attrs=({'placeholder':'give small description for this Recipe'})
         self.fields['image'].widget.attrs=({'label':'Add a photo of your Recipe:'})
         self.fields['preparation_time'].widget.attrs=({'placeholder':'preparation time in minutes'})
-        self.fields['ingredients'].widget.attrs=({'placeholder':'ingredients of your recipe'})
+        self.fields['ingredients'].widget.attrs=({'placeholder':'seaparete eachone with comma(,) and start eachone with dashes(-)'})
         self.fields['preparation'].widget.attrs=({'placeholder':'write about how to make this recipe'})
         self.fields['category'].widget.attrs=({'placeholder':'eg:sweet,spicy,peppery etc...'})
         self.fields['native_food_of'].widget.attrs=({'placeholder':'eg:indian,italian,arabian etc...'})
         
-
-class IngredientsForm(forms.ModelForm):
-    class Meta:
-        model = models.Ingredients
-        fields = "__all__"

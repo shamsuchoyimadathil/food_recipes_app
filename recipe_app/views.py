@@ -13,19 +13,21 @@ def main(request):
     context = {}
     recipes = models.Recipes.objects.all()
     filter = filters.RecipesFilters(request.GET, queryset=recipes)
-    recipes = filter.qs
+    
+    context['show_img'] = True
+    if request.GET.get("name","") != "":
+        context['show_img'] = False
 
-    if recipes is None or len(recipes)==0:
+    recipes = filter.qs 
+
+
+    if recipes is None or len(recipes) == 0:
         context["no_result"] = True
-        
-
     context['recipes'] = recipes
     context['filter'] = filter 
 
-
-    # context['no_results'] = recipes.__len__ = 0
-
     return render(request,"recipe/main.html",context)
+    
     
 @login_required
 def add_recipe(request):
@@ -33,7 +35,6 @@ def add_recipe(request):
     context = {}
 
     add_recipe_form = forms.RecipesForm(request.POST,request.FILES)
-    ingredients_form = forms.IngredientsForm(request.POST)
 
     if add_recipe_form.is_valid():
         cleaned_data = add_recipe_form.cleaned_data
@@ -48,19 +49,7 @@ def add_recipe(request):
     else:
         add_recipe_form = forms.RecipesForm  
 
-
-    # if ingredients_form.is_valid():
-    #     cleaned_data = ingredients_form.cleaned_data
-    #     data = models.Ingredients(ingredient=cleaned_data['ingredient'])
-
-    #     data.save()
-    #     return HttpResponseRedirect("/")
-    # else:
-    #     ingredients_form = forms.IngredientsForm
-        
-
     context['form'] = add_recipe_form
-    context['ingredients'] = ingredients_form 
 
     return render(request,"recipe/add_recipe.html",context)
 

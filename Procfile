@@ -1,0 +1,1 @@
+web: gunicorn Food_Recipes_App_Django.wsgi --log-file - 

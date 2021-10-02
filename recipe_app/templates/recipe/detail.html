@@ -22,7 +22,16 @@
                     <p>{{detail.cuisine_type}}</p>
                 </div>
             </div>
-            <button class="btn btn-outline-danger ">Add to favorite</button>
+            <form action="{% url 'favouries-page' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="favourite_id" value={{detail.id}}> 
+
+                {% if detail.id in request.session.favourite_recipes %}
+                    <button class="btn btn-outline-danger" type="submit" name='remove'> Remove from Favorite</button>
+                {% else %}
+                    <button class="btn btn-outline-danger" type="submit" name='add'> Add to Favorite</button>
+                {% endif %}
+            </form>
         </div> 
         <hr>
 
@@ -35,7 +44,7 @@
         <div>
             <h3>Ingredients :-</h3>
             <ul>
-                <li>{{detail.ingredients}}</li>
+                <div>{{detail.ingredients}}</div>
             </ul>
         </div> 
         <hr> 
@@ -44,16 +53,7 @@
             <p>{{detail.preparation}}</p>
         </div>
         
-    <form action="{% url 'favouries-page' %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="favourite_id" value={{detail.id}}> 
-
-        {% if detail.id in request.session.favourite_recipes %}
-            <button type="submit" name='remove'> Remove from Favorite</button>
-        {% else %}
-            <button type="submit" name='add'> Add to Favorite</button>
-        {% endif %}
-    </form>
+  
 
 
     </section>

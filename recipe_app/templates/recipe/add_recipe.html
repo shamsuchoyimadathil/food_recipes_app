@@ -9,27 +9,10 @@
         {% csrf_token %}
         <h1> Add a recipe </h1>
         <hr>
-            <ul>
-                <li>{{form.food_name.label_tag}}</li>
-                <li>{{form.food_name}}</li>
-                <li>{{form.description.label_tag}}</li>
-                <li>{{form.description}}</li>
-                <li>{{form.image.label_tag}}</li>
-                <li>{{form.image}}</li>
-                <li>{{form.preparation_time.label_tag}}</li>
-                <li>{{form.preparation_time}}</li>
-                <li>{{form.ingredients.label_tag}}</li>
-                <li>{{form.ingredients}}</li> 
-                
-                <button class="btn btn-outline-danger" style="width:250px; margin-bottom:2rem;">add another ingredient</button>
-
-                <li>{{form.preparation.label_tag}}</li>
-                <li>{{form.preparation}}</li>
-                <li>{{form.category.label_tag}}</li>
-                <li>{{form.category}}</li>
-                <li>{{form.native_food_of.label_tag}}</li>
-                <li>{{form.native_food_of}}</li>
-            </ul>
+            <div>
+                {{form.label_tag}}
+                {{form}}
+            </div>
         
         <button class="btn btn-outline-success" type="submit"> save</button>
     </form> 

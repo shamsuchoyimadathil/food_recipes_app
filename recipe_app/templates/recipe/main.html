@@ -8,22 +8,29 @@
 
     
 	<h1>Chakka The Recipe Manager</h1>
-    <hr > 
+    <hr> 
+
 
     <form id="search_form" method="GET" class="form-inline my-2 my-lg-0 ">
         {{filter.form}}
-      <button class="btn btn-outline-success my-2 my-sm-0" id="search" type="submit">Search</button>
-    </form> 
+      <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+    </form>  
+
 
     <div class="wrapper">
         <a class="btn btn-outline-danger" href="{% url 'add-recipe' %}" >Add Recipe</a>
         <a class="btn btn-outline-danger" href="{% url 'favouries-page' %}">favourites</a>
     </div>
+    
+    {% if show_img%}
+        <div class="quote_container">
+            <img class="quote_image" src="https://i.pinimg.com/originals/f3/d5/d7/f3d5d72ebf4f889d9dd7e46d64a98f0d.jpg" alt="">
+            <p id="quote_p">If you are a chef, no matter how good a chef you are, it's not good cooking for yourself; the joy is in cooking for others.</p>
+         </div>  
+    {% endif %}
+  
 
-    <div class="quote_container">
-        <img class="quote_image" src="https://i.pinimg.com/originals/f3/d5/d7/f3d5d72ebf4f889d9dd7e46d64a98f0d.jpg" alt="">
-        <p id="quote_p">If you are a chef, no matter how good a chef you are, it's not good cooking for yourself; the joy is in cooking for others.</p>
-    </div>
+       
 
 
     <div class="container">
@@ -33,18 +40,15 @@
         {% else %}
             {% for a in recipes %}
 
-            <a href="{% url 'detail-page' a.pk %}" class="card" style="width: 15rem;">
+            <a href="{% url 'detail-page' a.pk %}" class="card">
                 <img src="{{a.image.url}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{a.food_name}}</h5>
                 </div>
             </a>
-
-        
             {% endfor %} 
         
-         {% endif %} 
-        
+        {% endif %}  
 
     </div> 
 
@@ -54,7 +58,6 @@
             <div class="footer-copyright text-center py-3 text-dark">© 2021 Copyright:
                 <a href="#"> chakka the recipe manager</a>
             </div>
-
         </footer>
   
 {% endblock content %}
